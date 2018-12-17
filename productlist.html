@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 1.添加视口 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 2.引包 -->
+    <!-- 2.1引入mui的css -->
+    <link rel="stylesheet" href="lib/mui/css/mui.css">
+    <!-- 2.2引入字体图标的CSS -->
+    <link rel="stylesheet" href="lib/fontAwesome/css/font-awesome.css">
+    <!-- 2.3引入category的less文件 -->
+    <link rel="stylesheet/less" href="less/productlist.less">
+    <!-- 2.4引入less.js编译器文件 -->
+    <script src="lib/less/less.js"></script>
+     <!-- 2.5在页面前引入rem.js 等页面加载出来之前生效样式马上执行 -->
+     <script src="js/rem.js"></script>
+</head>
+
+<body>
+    <!-- 头部区域 -->
+    <header id="header">
+        <a href="javascript:history.back();" class="fa fa-arrow-left"></a>
+        <h4>商品列表</h4>
+    </header>
+
+    <!-- 主体区域 -->
+    <main id="main">
+        <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <div class="search-form">
+                    <form action="#">
+                        <input type="search" placeholder="请输入你要搜索的商品" class="input-search">
+                        <button type="button" class="btn-search mui-btn mui-btn-primary btn-search">搜索</button>
+                    </form>
+                    <div class="productList">
+                        <div class="title">
+                            <div class="mui-row">
+                                <div class="mui-col-xs-3 active">
+                                    <a href="#">
+                                        <span>上架时间</span><i class="fa fa-angle-down"></i>
+                                    </a>
+                                </div>
+                                <div class="mui-col-xs-3">
+                                    <!-- 1. 把价格排序的方式 和 排序的顺序 存储到自定义属性中 -->
+                                    <a href="#" data-sort-type="price" data-sort="1">
+                                        <span>价格</span><i class="fa fa-angle-down"></i>
+                                    </a>
+                                </div>
+                                <div class="mui-col-xs-3">
+                                    <!-- 1. 把数量排序的方式 和 排序的顺序 存储到自定义属性中 -->
+                                    <a href="#" data-sort-type="num" data-sort="1">
+                                        <span>销量</span><i class="fa fa-angle-down"></i>
+                                    </a>
+                                </div>
+                                <div class="mui-col-xs-3">
+                                    <a href="#">
+                                        <span>折扣</span><i class="fa fa-angle-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="product product-box">
+                                <div class="left">
+                                    <a href="#">
+                                        <img src="images/product.jpg" alt="">
+                                        <p class="product-name">adidas阿迪达斯 男式 场下休闲篮球鞋S83700</p>
+                                        <p class="product-price"><span>¥560.00</span><del>¥888.00</del></p>
+                                        <button type="button" class="mui-btn mui-btn-primary product-buy">立即购买</button>
+                                    </a>
+                                </div>
+                                <div class="left">
+                                    <a href="#">
+                                        <img src="images/product.jpg" alt="">
+                                        <p class="product-name">adidas阿迪达斯 男式 场下休闲篮球鞋S83700</p>
+                                        <p class="product-price"><span>¥560.00</span><del>¥888.00</del></p>
+                                        <button type="button" class="mui-btn mui-btn-primary product-buy">立即购买</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部区域 -->
+    <footer id="footer">
+            <a href="index.html" class="active">
+                <i class="fa fa-home"></i>
+                <span>首页</span>
+            </a>
+            <a href="category.html">
+                <i class="fa fa-bars"></i>
+                <span>分类</span>
+            </a>
+            <a href="cart.html">
+                <i class="fa fa-shopping-cart"></i>
+                <span>购物车</span>
+            </a>
+            <a href="user.html">
+                <i class="fa fa-user"></i>
+                <span>会员中心</span>
+            </a>
+        </footer>
+    <!-- 渲染模板 -->
+    <script id="productlistTpl" type="text/html">
+        {{if data.length>0}}
+        {{each data value}}
+        <div class="left">
+            <a href="#">
+                <img src="{{value.pic[0].picAddr}}" alt="">
+                <p class="product-name">{{value.proName}}</p>
+                <p class="product-price"><span>￥{{value.price}}</span><del>￥{{value.oldPrice}}</del></p>
+                <button type="button" class="mui-btn mui-btn-primary product-buy" data-id="{{value.id}}">立即购买</button>
+            </a>
+        </div>
+        {{/each}}
+        {{else}}
+        <p>当前商品没有存库了！</p>
+        {{/if}}
+   </script>
+
+
+    <!--2.5引入miu.js文件  -->
+    <script src="lib/mui/js/mui.js"></script>
+    <!-- 2.6引入模板引擎 ,template-web用来渲染页面 最新版最简洁的 -->
+    <script src="lib/artTemplate/template-web.js"></script>
+    <!-- 2.7引入zepto的JS  ajax dom操作库的js库 -->
+    <script src="lib/zepto/zepto.min.js"></script>
+    <!-- 2.8导入search的js文件 -->
+    <script src="js/productlistFZ.js"></script>
+</body>
+
+</html>

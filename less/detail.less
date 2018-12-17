@@ -1,0 +1,64 @@
+@import 'base.less';
+#main{
+    position: relative;
+    height: 100%;
+    .product{
+        font-size: .12rem;
+
+        .product-name{
+            border-bottom: .01rem solid #ccc;
+            padding: .05rem;
+            span{
+                font-weight: bolder;
+            }
+        }
+        .product-price{
+            padding: .05rem;
+            border-bottom: .01rem solid #ccc;
+            span{
+                font-size: 0.18rem;
+                color: red;
+            }
+        }
+        .product-size{
+            border-bottom: .01rem solid #ccc;
+            padding: 0.1rem 0.1rem 0.05rem;
+            button{
+                padding: 0;
+                margin-bottom: 0.05rem;
+                vertical-align: middle;  
+                width: 0.25rem;
+                height: 0.25rem;
+            }
+        }
+        .product-num{
+            padding: .05rem;
+            border-bottom: .01rem solid #ccc; 
+            .mui-numbox{
+                height: .24rem;
+            }
+        }
+    }
+}
+
+/* 底部区域 */
+#footer{
+    background-color: @border-color;
+    display: flex;
+    height: .38rem;
+    line-height:.38rem ;
+    a{
+        display: block;
+        width: .447rem;
+        height: .27rem;
+        font-size: 0.18rem;
+        line-height: 0.27rem;
+        color: #333;
+    }
+    button{
+        margin: 0 0.1rem;
+        flex: 1;
+        font-size: .12rem;
+        padding: 0.0rem 0.12rem;
+    }
+}

@@ -1,0 +1,59 @@
+@import 'base.less';
+
+/* 主体区域 */
+#main{
+    background-color: #ccc;
+    display: flex;
+   .category-left{
+       position: relative;
+       width: .8rem;
+       /* 区域滚动的子容器 现在默认高度没有超过父元素的mui-scroll-wrapper的高度 设置一个超过的高度 */
+       .mui-scroll{
+           /* 设置一个最小高 当内容没有超过这个最小高就生效这个最小高 超过 是超过的高 */
+           min-height: 100.5%;
+       }
+       ul{
+           li{ 
+               &.active{
+                    a{
+                    background-color: @border-color;
+                    color: @main-color;  
+                    }  
+               }
+               a{
+                text-align: center;
+                display: block;
+                width: .8rem;
+                height: .45rem;
+                line-height: .45rem;
+                background-color: #fff;
+                color: #000;
+                border-bottom: 1px solid @border-color;
+               }
+           }
+       }
+   } 
+   .category-right{
+       position: relative;
+       /* 注意给right大盒子加padding不会影响绝对定位的子元素 */
+      /*  padding: .1rem; */
+       flex:1;
+        /* 区域滚动的子容器 现在默认高度没有超过父元素的mui-scroll-wrapper的高度 设置一个超过的高度 */
+       .mui-scroll{
+           /* 设置一个最小高 当内容没有超过这个最小高就生效这个最小高 超过 是超过的高 */
+           min-height: 100.5%;
+    }
+       a{
+           display: block;
+           background-color: #fff;
+           text-align: center;
+           img{
+               width: 100%;
+           }
+       }
+       .mui-row{
+           /* mui-row里面的都是col列 这些列 是相对的定位在标准流 受到padding的影响 */
+           padding: .1rem;
+       }
+   }
+}

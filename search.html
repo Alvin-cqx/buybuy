@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 1.添加视口 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 2.引包 -->
+    <!-- 2.1引入mui的css -->
+    <link rel="stylesheet" href="lib/mui/css/mui.css">
+    <!-- 2.2引入字体图标的CSS -->
+    <link rel="stylesheet" href="lib/fontAwesome/css/font-awesome.css">
+    <!-- 2.3引入category的less文件 -->
+    <link rel="stylesheet/less" href="less/search.less">
+    <!-- 2.4引入less.js编译器文件 -->
+    <script src="lib/less/less.js"></script>
+     <!-- 2.5在页面前引入rem.js 等页面加载出来之前生效样式马上执行 -->
+     <script src="js/rem.js"></script>
+</head>
+
+<body>
+    <!-- 头部区域 -->
+    <header id="header">
+        <a href="javascript:history.back();" class="fa fa-arrow-left"></a>
+        <h4>搜索中心</h4>
+    </header>
+
+    <!-- 主体区域 -->
+    <main id="main">
+        <div class="search-form">
+            <form action="#">
+                <input type="search" placeholder="请输入你要搜索的商品" class="input-search">
+                <button type="button" class="btn-search mui-btn mui-btn-primary btn-search">搜索</button>
+            </form>
+
+        </div>
+        <div class="search-history">
+             <!-- 使用卡片布局 -->
+            <div class="mui-card">
+                <!--页眉，放置标题-->
+                <div class="mui-card-header">
+                    <span>搜索历史</span>
+                    <a href="#" class="fa fa-trash btn-clear">清空记录</a>
+                </div>
+                <!--内容区-->
+                <div class="mui-card-content">
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell">Item 1
+                            <span class="fa fa-close mui-badge"></span>
+                        </li>
+                        <li class="mui-table-view-cell">Item 2
+                            <span class="fa fa-close mui-badge"></span>
+                        </li>
+                        <li class="mui-table-view-cell">Item 3
+                            <span class="fa fa-close mui-badge"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部区域 -->
+    <footer id="footer">
+            <a href="index.html" class="active">
+                <i class="fa fa-home"></i>
+                <span>首页</span>
+            </a>
+            <a href="category.html">
+                <i class="fa fa-bars"></i>
+                <span>分类</span>
+            </a>
+            <a href="cart.html">
+                <i class="fa fa-shopping-cart"></i>
+                <span>购物车</span>
+            </a>
+            <a href="user.html">
+                <i class="fa fa-user"></i>
+                <span>会员中心</span>
+            </a>
+        </footer>
+    <!-- 渲染历史记录的模板 -->
+    <script id="historyListTpl" type="text/html">
+        {{if list.length>0}}
+          {{each list value index}}
+            <li class="mui-table-view-cell">
+                {{value}}
+                 <!-- 把当前值的索引绑定在旁边x元素的data-index属性 后面删除可以获取当前点击x的索引 -->
+                <span class="fa fa-close mui-badge btn-delete" data-index="{{index}}"></span>
+            </li>
+          {{/each}}
+        {{else}}  
+           <li class="mui-table-view-cell">无记录</li>
+        {{/if}}
+    </script>
+
+
+    <!--2.5引入miu.js文件  -->
+    <script src="lib/mui/js/mui.js"></script>
+    <!-- 2.6引入模板引擎 ,template-web用来渲染页面 最新版最简洁的 -->
+    <script src="lib/artTemplate/template-web.js"></script>
+    <!-- 2.7引入zepto的JS  ajax dom操作库的js库 -->
+    <script src="lib/zepto/zepto.min.js"></script>
+    <!-- 2.8导入search的js文件 -->
+    <script src="js/search.js"></script>
+</body>
+
+</html>
